@@ -44,7 +44,7 @@ public class L1Cache implements Cache<String, Event> {
     }
 
     @Override
-    public void insertEvent(String key, Event event) {
+    public synchronized void insertEvent(String key, Event event) {
         Event fetchedEvent = internalStorage.get(key);
 
         if (internalQueue.size() < MAX_SIZE) {
